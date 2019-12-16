@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxxzt.dao.MobileNewsDao">
+
+    <resultMap id="newsList" type="MobileNews">
+        <result property="serialNo" column="SERIALNO" />
+        <result property="type" column="TYPE" />
+        <result property="title" column="TITLE" />
+        <result property="carouselName" column="CAROUSELNAME" />
+        <result property="thumbnailName" column="THUMBNAILNAME" />
+        <result property="details" column="DETAILS" />
+        <result property="fileName" column="FILENAME" />
+        <result property="dateTime" column="DATETIME" />
+        <result property="status" column="STATUS" />
+        <result property="statusTime" column="STATUSTIME" />
+    </resultMap>
+
+    <select id="All" resultMap="newsList">
+    	SELECT
+		SERIALNO, TYPE, TITLE, CAROUSELNAME, THUMBNAILNAME, DETAILS, FILENAME, TO_CHAR(DATETIME,'yyyy-mm-dd hh24:mi:ss') as DATETIME,
+		STATUS, TO_CHAR(STATUSTIME,'yyyy-mm-dd hh24:mi:ss') as STATUSTIME
+		FROM MARGIN.FORWARD_MOBLIENEWS
+	</select>
+
+</mapper>
